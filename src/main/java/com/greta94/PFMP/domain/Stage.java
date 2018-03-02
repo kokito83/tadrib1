@@ -35,16 +35,43 @@ import java.util.Objects;
 
         @ManyToOne (cascade = CascadeType.ALL)
         private Entreprise entreprise;
-        //=====lié liste des Stages vers leur Tuteur
+
+    public Tuteur getTuteur() {
+        return tuteur;
+    }
+
+    public void setTuteur(Tuteur tuteur) {
+        this.tuteur = tuteur;
+    }
+
+    public Salarie_Greta getSalarie_stage() {
+        return salarie_stage;
+    }
+
+    public void setSalarie_stage(Salarie_Greta salarie_stage) {
+        this.salarie_stage = salarie_stage;
+    }
+
+    public Stagiaire getStagiaire() {
+        return stagiaire;
+    }
+
+    public void setStagiaire(Stagiaire stagiaire) {
+        this.stagiaire = stagiaire;
+    }
+    //=====lié liste des Stages vers leur Tuteur
 
         @ManyToOne (cascade = CascadeType.ALL)
          private Tuteur tuteur;
-       //=====lié liste des Stages vers leur Tuteur
+       //=====lié liste des Stages vers leur Salarié greta
 
        @ManyToOne (cascade = CascadeType.ALL)
         private Salarie_Greta salarie_stage;
 
+       //=====lié liste des Stages vers leur Salarié greta
 
+       @ManyToOne (cascade = CascadeType.ALL)
+        private Stagiaire stagiaire;
 
         public Stage() {
         }
