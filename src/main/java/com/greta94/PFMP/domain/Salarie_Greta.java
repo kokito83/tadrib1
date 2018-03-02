@@ -1,5 +1,6 @@
 package com.greta94.PFMP.domain;
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 //*****Création de la table stagiaire******
@@ -37,6 +38,17 @@ public class Salarie_Greta {
 
     @Column
     private String mdpOrigine;
+    // lié la table entreprise avec stage
+    @OneToMany(mappedBy ="salarie_stage")
+    private List<Stage> stages;
+
+    public List<Stage> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<Stage> stages) {
+        this.stages = stages;
+    }
 
     /**
      * Les rôles de l'utiilisateur éventuellement séparés par une
