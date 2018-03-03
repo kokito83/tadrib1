@@ -32,7 +32,9 @@ public class Entreprise {
     // lié la table entreprise avec stage
     @OneToMany(mappedBy = "entreprise")
     private List<Stage> stages;
-
+    // lié la table entreprise avec ses salaries
+    @OneToMany(mappedBy = "entreprise")
+    private List<Tuteur> tuteurs;
     public Entreprise() {
     }
 

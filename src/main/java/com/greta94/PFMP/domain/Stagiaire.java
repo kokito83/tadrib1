@@ -1,8 +1,10 @@
 package com.greta94.PFMP.domain;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Projet PFMP
@@ -47,6 +49,17 @@ public class Stagiaire {
      @OneToMany(mappedBy ="stagiaire")
     private List<Stage> stages;
 
+  @ManyToMany(cascade=CascadeType.ALL)
+  private Set<Session> sessions;
+
+  public Stagiaire(){
+    this.sessions = new HashSet<>();
+    // this.disciplines = new HashSet<>();
+
+  }
+
+
+
   public List<Stage> getStages() {
     return stages;
   }
@@ -55,8 +68,6 @@ public class Stagiaire {
     this.stages = stages;
   }
 
-  public Stagiaire() {
-  }
 
   public Long getId() {
     return id;
@@ -136,6 +147,14 @@ public class Stagiaire {
 
   public void setSecuriteSociale(String securiteSociale) {
     this.securiteSociale = securiteSociale;
+  }
+
+  public Set<Session> getSessions() {
+    return sessions;
+  }
+
+  public void setSessions(Set<Session> sessions) {
+    this.sessions = sessions;
   }
 
   @Override

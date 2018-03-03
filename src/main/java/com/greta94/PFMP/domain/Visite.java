@@ -21,7 +21,7 @@ public class Visite {
     @ManyToOne(cascade = CascadeType.ALL)
     private Stage stage;
 
-   //=====lié visite vers leur formateur
+    //=====lié visite vers leur formateur
     @ManyToOne(cascade = CascadeType.ALL)
     private Salarie_Greta formateur;
 

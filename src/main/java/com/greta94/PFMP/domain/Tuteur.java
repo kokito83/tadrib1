@@ -44,6 +44,11 @@ public class Tuteur {
     @OneToMany(mappedBy ="tuteur")
     private List<Stage> stages;
 
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Entreprise entreprise;
+
+
     public List<Stage> getStages() {
         return stages;
     }
