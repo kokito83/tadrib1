@@ -1,5 +1,6 @@
 package com.greta94.PFMP.domain;
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 
 //*****Création de la table stagiaire******
@@ -38,12 +39,25 @@ public class Salarie_Greta {
     @Column
     private String mdpOrigine;
 
+    @Column
+    private String roles;
+
+    
+
+    // lié la table salarie de greta avec stage
+    @OneToMany(mappedBy ="salarie_greta")
+    private List<Stage> stages;
+
+
+    // lié la table salarie de greta avec stage
+    @OneToMany(mappedBy ="formateur")
+    private List<Visite> visites;
+
     /**
      * Les rôles de l'utiilisateur éventuellement séparés par une
      * virgule
      */
-    @Column
-    private String roles;
+
 
     public Salarie_Greta() {
     }
@@ -152,6 +166,15 @@ public class Salarie_Greta {
         this.roles = roles;
     }
 
+    public List<Stage> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<Stage> stages) {
+        this.stages = stages;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -168,19 +191,21 @@ public class Salarie_Greta {
                 Objects.equals(getLogin(), that.getLogin()) &&
                 Objects.equals(getMdp(), that.getMdp()) &&
                 Objects.equals(getMdpOrigine(), that.getMdpOrigine()) &&
-                Objects.equals(getRoles(), that.getRoles());
+                Objects.equals(getRoles(), that.getRoles()) &&
+                Objects.equals(getStages(), that.getStages());
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(getCodeSynchro(), getCivilite(), getNom(), getPrenom(), getAdresse(), getTelephone(), getEmail(), getFonction(), getLogin(), getMdp(), getMdpOrigine(), getRoles());
+        return Objects.hash(getCodeSynchro(), getCivilite(), getNom(), getPrenom(), getAdresse(), getTelephone(), getEmail(), getFonction(), getLogin(), getMdp(), getMdpOrigine(), getRoles(), getStages());
     }
 
     @Override
     public String toString() {
         return "Salarie_Greta{" +
-                "codeSynchro=" + codeSynchro +
+                "id=" + id +
+                ", codeSynchro=" + codeSynchro +
                 ", civilite='" + civilite + '\'' +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
@@ -188,6 +213,11 @@ public class Salarie_Greta {
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
                 ", fonction='" + fonction + '\'' +
+                ", login='" + login + '\'' +
+                ", mdp='" + mdp + '\'' +
+                ", mdpOrigine='" + mdpOrigine + '\'' +
+                ", roles='" + roles + '\'' +
+                ", stages=" + stages +
                 '}';
     }
 }
