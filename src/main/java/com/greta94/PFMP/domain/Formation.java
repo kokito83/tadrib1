@@ -2,6 +2,7 @@ package com.greta94.PFMP.domain;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 
 //*****Création de la table Stage ******
@@ -23,5 +24,6 @@ public class Formation {
     @OneToMany(mappedBy = "formation")
     private List<Session> sessions;
 
-
+    @ManyToMany(mappedBy = "formations")
+    private Set<Salarie_Greta> formateurs;
 }
